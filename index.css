@@ -51,9 +51,10 @@ p.yap-intro {
 
 ol {
     margin-left: var(--gutter);
+    list-style-position: inside;
 }
 
-ol.indent-star {
+ul.indent-star {
     list-style-image: url(assets/pix-star.png);
     list-style-position: outside;
     line-height: 1.5rem;
@@ -70,8 +71,20 @@ ol.indent-star {
 }
 
 nav {
+    z-index: 999;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: fit-content;
     padding: var(--fluff) var(--gutter);
-    border-bottom: 2px dashed var(--50p);
+    background: linear-gradient(to left, var(--70p), transparent);
+
+    div {
+        display: inline-block;
+        * {
+            margin: 0 var(--fluff);
+        }
+    }
 }
 
 figure {
@@ -83,8 +96,9 @@ figure {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
+    display: inline-block;
+    position: relative;
+    margin-top: auto;
     width: 100%;
 
     padding: var(--fluff) var(--gutter);
@@ -101,8 +115,56 @@ hr {
     width: 100vw;
 }
 
+/** project control **/
+div#projects {
+    height: 100vh;
+    min-height: fit-content;
+    max-height: 200vh;
+    width: 100%;
+    overflow: hidden;
+
+    .project-brief {
+        height: 10%;
+        padding: var(--fluff) var(--gutter);
+    }
+
+    .page-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: fit-content;
+        min-height: 90%; 
+        column-count: 4;
+        column-width: 25%;
+        column-gap: 0;
+
+        section {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 25%;
+            align-items: center;
+            justify-content: flex-start;
+            padding: var(--fluff);
+        }
+    }
+}
+
 #projects section {
-    min-height: 100vh;
+    display: flex;
+    min-height: 100%;
+}
+
+/** can also make this a mess; hence the modular buttons **/
+.project-wrapper {
+    display: block;
+
+    button {
+        margin: var(--fluff);
+    }
+}
+
+#webdev {
+    
 }
 
 .flex {
@@ -112,6 +174,7 @@ hr {
     flex-wrap: wrap;
 }
 
+/** text mods **/
 .header {
     font: 2rem sans-serif;
 }
@@ -126,7 +189,14 @@ hr {
     text-transform: uppercase;
 }
 
-/** text mods **/
+.larger-text {
+    font-size: 3rem;
+}
+
+.large-text {
+    font-size: 2.2rem;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -170,6 +240,10 @@ span.emoji {
     padding: var(--indent);
 }
 
+.padding-xtra {
+    padding: calc(var(--gutter)*2);
+}
+
 /** div custom **/
 .container-2 {
     display: flex;
@@ -179,12 +253,18 @@ span.emoji {
 
     div {
         flex: 50%;
+        width: 50%;
+        max-width: 50%;
         padding: var(--gutter) 0;
+
+        * {
+            max-width: 100%;
+        }
     }
 }
 
 div#intro {
-    padding: var(--gutter);
+    margin: var(--gutter);
 
     div.trivia {
         margin-top: var(--gutter);
@@ -269,7 +349,7 @@ div#contact {
     
     width: 60%;
     min-width: 60%;
-    max-width: 70%;
+    max-width: 100%;
     padding: var(--fluff);
     margin: var(--gutter);
     border: 2px solid var(--zed);
@@ -284,6 +364,12 @@ div#contact {
     }
 }
 
+.center {
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+
 /** interactable **/
 button {
     font: inherit;
@@ -291,13 +377,27 @@ button {
     background: none;
     border: none;
     border-radius: 0;
+    cursor: pointer;
 }
 
 /** interactable custom **/
+.modular-btn {
+    height: fit-content;
+    width: fit-content;
+    padding: var(--fluff) var(--gutter);
+}
+
 .rigid-btn {
     padding: 3px 6px;
     background-color: var(--70p);
     border: solid 1px var(--base);
+}
+
+.glass-btn {
+    padding: 3px 6px;
+    background-color: #CBFFDF80;
+    border: solid 1px var(--base);
+    backdrop-filter: blur(10px);
 }
 
 /** display mods **/
@@ -359,22 +459,12 @@ img.fill {
 
 /** TESTING AREA DONT TOUCH!!!! **/
 /** unless certified **/
-section#webdev {
-}
-
 .char-wrapper {
     position: absolute;
     z-index: 0;
 
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-
     height: 100%;
     width: 100%;
-    font-size: 30rem;
-    font-weight: 400;
 
     user-select: none;
     cursor: default;
@@ -406,6 +496,62 @@ section#webdev {
     will-change: transform;
 }
 
+.noise {
+    position: auto; /** used to be relative, waiting for a problem **/
+
+    /** divs in the noise will be free from it **/
+    div {
+        position: relative;
+    }
+}
+
+.noise::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    height: 100%;
+    width: 100%;
+    filter: contrast(170%) brightness(800%);
+}
+
+.rl-noise::before {
+    background: linear-gradient(to right, #0015FF90, transparent),
+    url(https://grainy-gradients.vercel.app/noise.svg);
+}
+
+.lr-noise::before {
+    background: linear-gradient(to left, #0015FF90, transparent),
+    url(https://grainy-gradients.vercel.app/noise.svg);
+}
+
+.intro-noise::before {
+    background: linear-gradient(140deg, #0015FF80 30%, transparent),
+    radial-gradient(circle at top left, white, transparent 500px),
+    radial-gradient(circle at 32% 0%, springgreen, transparent 250px), /** coords opp order **/
+    radial-gradient(circle at 90% 70%, yellow, transparent 600px),
+    radial-gradient(circle at 60% 50%, white, transparent 400px),
+    url(https://grainy-gradients.vercel.app/noise.svg);
+}
+
+/** animations **/
+.grow {
+    position: relative;
+    z-index: 1;
+    transform: scale(1);
+    transition: transform 400ms ease-in-out;
+}
+
+.grow:hover {
+    z-index: 999;
+    transform: scale(1.5);
+}
+
+.golf {
+    background-image: url(assets/background/jonas-from-berlin-noK6LAtgWlE-unsplash.jpg);
+    background-size: cover;
+}
+
 .testobj {
-    
+    border: 2px solid black;
 }

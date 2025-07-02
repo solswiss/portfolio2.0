@@ -6,12 +6,16 @@
     <title>Portfolio von Sol</title>
 </head>
 <body>
-    <nav>
-        <a href="#intro">introductions</a>
-        <a href="#projects">projects</a>
-        <a href="#contact">contact</a>
+    <nav class="lr-noise noise">
+        <div>
+            <a href="#intro">introductions</a>
+            <a href="#projects">projects</a>
+            <a href="#contact">contact</a>
+            <span class="padding-xtra"></span>
+        </div>
     </nav>
-    <div id="intro" class="page">
+    <div class="page intro-noise noise center">
+    <div id="intro" class="padding-xtra">
         <div class="label italic">Introductions</div>
         <div>Get to know me <span class="emoji">\<^^>/</span></div>
             <!--what ur like
@@ -27,7 +31,7 @@
                     i'm a cheeky college-bound chameleon sailing the high seas of the lone star state, soon to encounter some rocky cliffs—trust me, i can feel it in the waters.<br/>
                     in case you ever need <em>this</em>, here's a resume: <br/>
                 </p>
-                <div class="mini-resume cur-help capitalize" title="confused, are ye? email me for the real thing!">
+                <div class="mini-resume cur-help capitalize blur" title="confused, are ye? email me for the real thing!">
                     <span class="bold center-text">rezoomae</span>
                     <ol>
                         <li>once self-professed artist (birth–death)</li>
@@ -46,7 +50,7 @@
                     and, of course, making <del>straight garbage</del><ins>charming projects!</ins><br/>
                     more than anything, i'm an entertainer! you doubt me until you see how well i can make myself laugh. it's talent, talent, i tell you!<br/>
                 </p>
-                <ol class="indent-star">
+                <ol>
                     <li>meticulously cleaned by yours truly (lest I be forsaken by God (Monty Python and the Holy Grail))</li>
                     <li>did you know sleeping at 5 is not healthy? oh dear.</li>
                     <li>this is fine! everything's dandy! and don't tell doc!</li>
@@ -55,33 +59,64 @@
                 </ol>
             </div>
             <div class="panel-right-2 centerx2">
-                <img src="assets/demo_average_matching_extreme.jpg" alt="me persona, a scrible" class="">
+                <img src="assets/sharkboo.png" alt="me persona, a scrible" class="">
             </div>
+        </div>
+        <div class="trivia">
+            <div class="sublabel">trivia</div>
+            <div>
+                <ul class="indent-naked">
+                    <li class="word-wrapper">i got a standing desk a few years back... and i think it'll be a while yet before i find a better setup</li>
+                    <li class="word-wrapper">whenever i find myself within a 5ft radius of a tree i consider climbing it</li>
+                    <li class="word-wrapper">i'll be an aggie soon, whatever that means (JOKE)</li>
+                    <li class="word-wrapper">i'm a life-long collector of shark memorabilia. maybe i'll add that to my titles when i've amassed a nice amount!</li>
+                    <li class="word-wrapper">songs without lyrics are superior although i concede that karaoke is a great time</li>
+                    <li class="word-wrapper">my favorite color combo is probably white and red</li>
+                    <li><span class="word-wrapper">cats, cats, cats!</span>&nbsp;<a href="/catllection.html">interested?</a></li>
+                    <li class="word-wrapper">i have a minor rubber ducky collection, courtesy of a certain rubber-duck-obsessed teacher</li>
+                </ul>
             </div>
-            <hr>
-            <div class="trivia">
-                <div class="sublabel">trivia</div>
-                <div>
-                    <ul class="indent-naked">
-                        <li class="word-wrapper">i got a standing desk a few years back... and i think it'll be a while yet before i find a better setup</li>
-                        <li class="word-wrapper">whenever i find myself within a 5ft radius of a tree i consider climbing it</li>
-                        <li class="word-wrapper">i'll be an aggie soon, whatever that means (JOKE)</li>
-                        <li class="word-wrapper">i'm a life-long collector of shark memorabilia. maybe i'll add that to my titles when i've amassed a nice amount!</li>
-                        <li class="word-wrapper">songs without lyrics are superior although i concede that karaoke is a great time</li>
-                        <li class="word-wrapper">my favorite color combo is probably white and red</li>
-                        <li><span class="word-wrapper">cats, cats, cats!</span>&nbsp;<a href="/catllection.html">interested?</a></li>
-                        <li class="word-wrapper">i have a minor rubber ducky collection, courtesy of a certain rubber-duck-obsessed teacher</li>
-                    </ul>
-                </div>
-                
-            </div>
-
+        </div>
     </div>
-    <div id="projects">
-        <div class="header bold">Projects</div>
-        <div>These are cool, right?</div>
-
-        <section id="webdev" class="w-b">
+    </div>
+    <main> <!-- is this weird? yeah, i think so too -->
+        <div id="projects">
+            <div class="project-brief">
+                <div class="header bold">Projects</div>
+                <div>These are cool, right?</div>
+            </div>
+            <div class="page-wrapper">
+                <section id="webdev" class="golf">
+                    <div class="header">
+                        webdev
+                    </div>
+                    <div class="project-wrapper">
+                        <button class="large-text modular-btn rigid-btn grow">something</button>
+                        <button class="large-text modular-btn glass-btn grow">something else</button>
+                        <button class="large-text modular-btn rigid-btn grow">abc</button>
+                        <button class="large-text modular-btn glass-btn grow">testing</button>
+                        <button class="large-text modular-btn rigid-btn grow">a really long button for some reason</button>
+                        <button class="large-text modular-btn glass-btn grow">an even longer button since maybe just maybe some projects will be titled this horrendously!</button>
+                        <button class="large-text modular-btn rigid-btn grow">lalalalala</button>
+                        <button class="large-text modular-btn glass-btn grow">project_example</button>
+                        <button class="large-text modular-btn glass-btn grow">portfolio2.0 (should i?)</button>
+                        <button class="large-text modular-btn glass-btn grow">i think i dont have <em>this</em> many web projects..</button>
+                    </div>
+                </section>
+                <section id="gamedev">
+                    <div class="header">gamedev</div>
+                </section>
+                <section id="programming">
+                    <div class="header">general programming</div>
+                </section>
+                <section id="hardware">
+                    <div class="header">hardware</div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <!--
+    <section id="webdev" class="w-b">
             <div class="char-wrapper">
                 WEBDEV
             </div>
@@ -126,7 +161,7 @@
         <section id="hardware">
             <div>Hardware</div>
         </section>
-    </div>
+    -->
     <div id="contact">
         <div class="label italic">Contact</div>
         <a href="https://github.com/solswiss/" target="_blank">
