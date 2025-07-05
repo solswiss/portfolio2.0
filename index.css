@@ -7,6 +7,9 @@
     --gutter: 15px;
     --fluff: 10px;
     --indent: 3px;
+
+    --locked-bg: url('assets/sharkboo.png');
+    --locked: #00000080;
 }
 
 *,
@@ -27,7 +30,7 @@ html {
 body {
   background-color: var(--base);
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 500px;
   padding: 0;
   margin: 0;
@@ -263,12 +266,48 @@ span.emoji {
     }
 }
 
-div#intro {
-    margin: var(--gutter);
+div.d70p {
+    width: 70%;
+}
 
-    div.trivia {
-        margin-top: var(--gutter);
-    }
+div.d60p {
+    width: 60%;
+}
+
+div.d40p {
+    width: 40%;
+}
+
+div.d30p {
+    width: 30%;
+}
+
+div#intro {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    min-height: 85%;
+    margin: var(--gutter);
+}
+
+div.trivia {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    min-height: 30%;
+    height: 30%;
+    min-width: 100%;
+    width: 100%;
+    margin-top: var(--gutter);
+}
+
+#trivia-container {
+    flex: 1 0 0;
+    min-height: 50%;
+    height: fit-content;
+    min-width: 100%;
+    width: 100%;
+    /** adding overflow rules hides text scare :( **/
 }
 
 div#contact {
@@ -380,7 +419,22 @@ button {
     cursor: pointer;
 }
 
+:disabled {
+    cursor: not-allowed;
+}
+
 /** interactable custom **/
+.locked {
+    background: var(--locked-bg);
+    color: var(--locked);
+}
+
+button.locked {
+    background: var(--locked-bg);
+    background-size: contain;
+    color: var(--locked);
+}
+
 .modular-btn {
     height: fit-content;
     width: fit-content;
@@ -398,6 +452,12 @@ button {
     background-color: #CBFFDF80;
     border: solid 1px var(--base);
     backdrop-filter: blur(10px);
+}
+
+.clear-btn {
+    background: none;
+    background-color: none;
+    border: solid 1px var(--base);
 }
 
 /** display mods **/
@@ -512,7 +572,7 @@ img.fill {
     content: "";
     height: 100%;
     width: 100%;
-    filter: contrast(170%) brightness(800%);
+    filter: contrast(170%) brightness(1000%);
 }
 
 .rl-noise::before {
