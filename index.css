@@ -2,14 +2,47 @@
     --base:#FFFFFF;
     --70p:#CBFFDF;
     --50p:#CBF0FA;
+    --20p: #AAF0E0;
     --zed:#093242;
 
     --gutter: 15px;
     --fluff: 10px;
     --indent: 3px;
 
-    --locked-bg: url('assets/sharkboo.png');
-    --locked: #00000080;
+    --locked-texture: url('assets/texture/texture_locked.png');
+    --locked: #00000050;
+
+    --sans-default: Geist Mono, Roboto, sans-serif;
+    --sans-bold: hm-print, sans-serif;
+    --typewriter: typewriterA602;
+    --halb-mono: ProFontWindows;
+    --display-johanneke: Johanneke;
+    --display-skid: VtksEntulho;
+}
+
+@font-face {
+    font-family: typewriterA602;
+    src: url('assets/fonts/typewriterA602.ttf');
+}
+
+@font-face {
+    font-family: ProFontWindows;
+    src: url('assets/fonts/ProFontWindows.ttf');
+}
+
+@font-face {
+    font-family: Johanneke;
+    src: url('assets/fonts/Johanneke.ttf');
+}
+
+@font-face {
+    font-family: VtksEntulho;
+    src: url('assets/fonts/Vtks\ Entulho.ttf');
+}
+
+@font-face {
+    font-family: hm-print;
+    src: url('assets/fonts/印品鸿蒙体.ttf');
 }
 
 *,
@@ -30,11 +63,11 @@ html {
 body {
   background-color: var(--base);
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   min-height: 500px;
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: var(--sans-default), sans-serif;
   color: var(--zed);
 }
 
@@ -179,16 +212,16 @@ div#projects {
 
 /** text mods **/
 .header {
-    font: 2rem sans-serif;
+    font: 2rem var(--sans-default);
 }
 
 .label {
-    font: 1.2rem serif;
+    font: 1.45rem var(--typewriter), serif;
     text-transform: capitalize;
 }
 
 .sublabel {
-    font: 1rem serif;
+    font: 1.2rem var(--halb-mono), var(--sans-default);
     text-transform: uppercase;
 }
 
@@ -225,10 +258,10 @@ div#projects {
 }
 
 span.emoji {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--halb-mono), 'Courier New', Courier, monospace;
     padding: 0px 3px;
-    color: var(--zero);
-    background-color: var(--70p);
+    color: var(--base);
+    background-color: var(--20p);
     border-radius: 3px;
 }
 
@@ -425,17 +458,19 @@ button {
 
 /** interactable custom **/
 .locked {
-    background: var(--locked-bg);
+    background: var(--locked-texture);
     color: var(--locked);
 }
 
 button.locked {
-    background: var(--locked-bg);
-    background-size: contain;
-    color: var(--locked);
+    background: var(--locked) var(--locked-texture);
+    background-size: 55%;
+    color: var(--base);
+    border: 1px solid var(--locked);
 }
 
 .modular-btn {
+    font-family: var(--halb-mono);
     height: fit-content;
     width: fit-content;
     padding: var(--fluff) var(--gutter);
@@ -585,7 +620,14 @@ img.fill {
     url(https://grainy-gradients.vercel.app/noise.svg);
 }
 
+body.noise,
+body.noise::before {
+    min-height: 150vh;
+    height: 100%;
+}
+
 .intro-noise::before {
+    height: 100%;
     background: linear-gradient(140deg, #0015FF80 30%, transparent),
     radial-gradient(circle at top left, white, transparent 500px),
     radial-gradient(circle at 32% 0%, springgreen, transparent 250px), /** coords opp order **/

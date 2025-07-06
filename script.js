@@ -5,7 +5,12 @@ let achievements = []; // keeps track of achievements
 
 /** trivial stuff */
 const trivia = data.trivia.array;
-const trivia_all = data.trivia.all;
+let trivia_all = `<div>
+            <ul class="indent-naked">`;
+for (const e of trivia) {
+    trivia_all = trivia_all.concat(`<li class="word-wrapper">${e}</li>`);
+}
+trivia_all = trivia_all.concat(`</ul></div>`);
 let trivia_punchout = new Set(); // stores seen indices
 let trivia_i0 = -1; // previous index
 let trivia_clicks = 0;
@@ -152,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (trivia_toggle.classList.contains("locked")) {
                     trivia_toggle.classList.remove("locked");
                     trivia_toggle.removeAttribute("disabled");
+                    trivia_toggle.classList.add("clear-btn");
                 }
             }
         } else {
@@ -159,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
             let i1;
             do {
                 i1 = Math.floor(Math.random()*trivia.length);
-                console.log(i1);
             } while (i1 == trivia_i0); 
             trivia_i0 = i1; // ban repeat trivias
             trivia_punchout.add(i1);

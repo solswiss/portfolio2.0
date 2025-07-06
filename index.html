@@ -2,10 +2,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
     <link rel="stylesheet" href="index.css">
     <title>Portfolio von Sol</title>
 </head>
-<body>
+<body class="intro-noise noise">
     <nav class="lr-noise noise">
         <div>
             <a href="#intro">introductions</a>
@@ -14,7 +17,7 @@
             <span class="padding-xtra"></span>
         </div>
     </nav>
-    <div class="page intro-noise noise center">
+    <div class="page center">
     <div id="intro" class="padding-xtra">
         <div class="label italic">Introductions</div>
         <div>Get to know me <span class="emoji">\<^^>/</span></div>
@@ -29,17 +32,7 @@
                 <p class="yap-intro">
                     <span class="uppercase bold farbe-seaweed">ahoy!</span> if you ever need, you can call me swiss, sol, milo, or ray, and yes, i realize the indecisiveness of my ways!<br/>
                     i'm a cheeky college-bound chameleon sailing the high seas of the lone star state, soon to encounter some rocky cliffs—trust me, i can feel it in the waters.<br/>
-                    in case you ever need <em>this</em>, here's a resume: <br/>
-                </p>
-                <div class="mini-resume cur-help capitalize blur" title="confused, are ye? email me for the real thing!">
-                    <span class="bold center-text">rezoomae</span>
-                    <ol>
-                        <li>once self-professed artist (birth–death)</li>
-                        <li>the chair upon which cats sleep from time to time (grade 5–?????)</li>
-                        <li>engineering and cs generalist (grade 9–?????)</li>
-                    </ol>
-                </div>
-                <p class="yap-intro">
+                    in case you ever need <em>this</em>, here's a <span class="cur-help" title="confused, are ye? email me for the real thing!">resume ⏸️</span><br/>
                     understandably this has you floored, but hark! i am but a casual sightseer, and as us sightseers do, i partake in <span class="italic">hobbies</span>,<br/>
                     with the likes of taking myself out for a walk on the deck<sup>1</sup>, 
                     other recreational activity, 
@@ -66,7 +59,7 @@
             <div class="sublabel">trivia</div>
             <div>
                 <button id="trivia-fetcher" class="modular-btn clear-btn">random trivia</button>
-                <button id="trivia-toggle-all" class="modular-btn clear-btn locked" disabled>show all</button>
+                <button id="trivia-toggle-all" class="modular-btn locked" disabled>show all</button>
             </div>
             <p id="trivia-container"></p> <!-- doesn't work! -->
         </div>
