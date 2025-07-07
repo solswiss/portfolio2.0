@@ -17,5 +17,16 @@ export const data = {
 
         ],
     },
-    "etc": 1,
+    "achievements": {
+        "click": {
+            "title": "resident clicker",
+            "req": "click at least 30 times",
+            "desc": "you have clicked at least 30 times"
+        },
+        "trivia": {
+            "title": "trivially wise",
+            "req": "discover all trivia",
+            "desc": "wow, you really looked at all the fun facts i had to offer! despite everything i did to prevent you! respect++"
+        }
+    },
 }

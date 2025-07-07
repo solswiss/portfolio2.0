@@ -182,34 +182,35 @@ hr {
 
 /** project control **/
 div#projects {
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 10% 90%;
     height: 100vh;
     min-height: fit-content;
     max-height: 200vh;
     width: 100%;
-    overflow: hidden;
+    overflow: wrap; /* unsure */
 
     .project-brief {
-        height: 10%;
+        height: 100%;
         padding: var(--fluff) var(--gutter);
     }
 
     .page-wrapper {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: start;
-        justify-content: space-around;
-        height: fit-content;
-        min-height: 90%; 
-        column-count: 4;
-        column-width: 24%;
-        column-gap: auto;
+        display: grid;
+        grid-template-columns: repeat(4,25%); /* might use areas instead for more variability */
+        grid-template-rows: 1;
+        grid-gap: 0;
+
+        height: auto;
+        width: 100%;
+
         padding: 0 var(--gutter);
+        margin: 0 auto;
 
         section {
             display: flex;
             flex-direction: column;
-            flex: 0 0 24%;
             align-items: center;
             justify-content: flex-start;
             padding: var(--fluff);
@@ -221,7 +222,9 @@ div#projects {
 
 #projects section {
     display: flex;
+    align-items: stretch;
     min-height: 100%;
+    min-width: 100%;
 }
 
 /** can also make this a mess; hence the modular buttons **/
@@ -233,9 +236,13 @@ div#projects {
     }
 }
 
-#webdev {
-    
+/** project themes **/
+.golf {
+    a:hover {
+        text-decoration: none;
+    }
 }
+
 
 .flex {
     display: flex;
@@ -392,13 +399,18 @@ div#contact {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        
+        a {
+            width: fit-content;
+        }
     }
     
-    div.github {
+    a.github {
         display: inline-block;
-        min-width: fit-content;
-        width: 16ch;
-        max-width: 16ch;
+        height: fit-content;
+        width: 30%;
+        max-width: 30%;
         transform: rotate(5deg);
 
         img {
@@ -415,8 +427,9 @@ div#contact {
 
     div.email {
         display: inline-block;
-        width: fit-content;
-        max-width: 30ch;
+        height: fit-content;
+        width: 30%;
+        max-width: 30%;
         transform: rotate(-11deg);
 
         img {
@@ -431,10 +444,11 @@ div#contact {
         }
     }
 
-    div.slack {
+    a.slack {
         display: inline-block;
-        width: 16ch;
-        max-width: 16ch;
+        height: fit-content;
+        width: 30%;
+        max-width: 30%;
         transform: rotate(-32deg);
 
         img {
@@ -659,7 +673,7 @@ img.fill {
 
 body.noise,
 body.noise::before {
-    min-height: 150vh;
+    min-height: 200vh;
     height: 100%;
 }
 
@@ -667,9 +681,9 @@ body.noise::before {
     height: 100%;
     background: linear-gradient(140deg, #0015FF80 30%, transparent),
     radial-gradient(circle at top left, white, transparent 500px),
-    radial-gradient(circle at 32% 0%, springgreen, transparent 250px), /** coords opp order **/
-    radial-gradient(circle at 90% 70%, yellow, transparent 600px),
-    radial-gradient(circle at 60% 50%, white, transparent 400px),
+    radial-gradient(circle at 32% 0%, springgreen, transparent 250px), /** coords x,y **/
+    radial-gradient(circle at 90% 50%, springgreen, transparent 600px),
+    radial-gradient(circle at 60% 22%, white, transparent 400px),
     url(https://grainy-gradients.vercel.app/noise.svg);
 }
 

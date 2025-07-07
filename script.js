@@ -15,6 +15,7 @@ let trivia_punchout = new Set(); // stores seen indices
 let trivia_i0 = -1; // previous index
 let trivia_clicks = 0;
 
+const achievements_db = data.achievements;
 
 /** won't work for <br> :) */
 const textScare = (selector, application) => {
@@ -194,6 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 you've seen all the trivia!!! 
                 and it only took <span class='bold'>${trivia_clicks}</span> clicks!!!!!!`;
                 trivia_punchout.add(-1);
+                achievements.push("trivia");
 
                 if (trivia_toggle.classList.contains("locked")) {
                     trivia_toggle.classList.remove("locked");
