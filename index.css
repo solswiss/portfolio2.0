@@ -8,6 +8,7 @@
     --gutter: 15px;
     --fluff: 10px;
     --indent: 3px;
+    --border-rad: 1rem;
 
     --locked-texture: url('assets/texture/texture_locked.png');
     --locked: #00000050;
@@ -132,13 +133,41 @@ figure {
 }
 
 footer {
-    display: inline-block;
     position: relative;
     margin-top: auto;
+    min-height: 300px;
+    height: fit-content;
     width: 100%;
+    border-top: 2px solid var(--50p);
 
-    padding: var(--fluff) var(--gutter);
-    border-top: 2px dashed var(--50p);
+    .site-map {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "main etc etc . "
+        "main etc etc . "
+        "main . . . "
+        "main . . . ";
+        gap: var(--gutter);
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .map-branch {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .branch-main {
+        grid-area: main;
+    }
+
+    .branch-etc {
+        grid-area: etc;
+    }
 }
 
 hr {
@@ -168,19 +197,24 @@ div#projects {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: start;
+        justify-content: space-around;
         height: fit-content;
         min-height: 90%; 
         column-count: 4;
-        column-width: 25%;
-        column-gap: 0;
+        column-width: 24%;
+        column-gap: auto;
+        padding: 0 var(--gutter);
 
         section {
             display: flex;
             flex-direction: column;
-            flex: 0 0 25%;
+            flex: 0 0 24%;
             align-items: center;
             justify-content: flex-start;
             padding: var(--fluff);
+            border: 2px solid var(--base); /*temp*/
+            border-radius: var(--border-rad); /*temp*/
         }
     }
 }
@@ -348,11 +382,19 @@ div#contact {
     padding: var(--gutter);
     height: 30vh;
     width: 100vw;
+}
 
+.contact-grid {
+    display: grid;
+    grid-template: 100% / auto auto auto;
+
+    .grid-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     div.github {
-        position: absolute;
-        top: auto;
-        left: 10%;
         display: inline-block;
         min-width: fit-content;
         width: 16ch;
@@ -372,9 +414,6 @@ div#contact {
     }
 
     div.email {
-        position: absolute;
-        top: auto;
-        left: 25%;
         display: inline-block;
         width: fit-content;
         max-width: 30ch;
@@ -393,9 +432,6 @@ div#contact {
     }
 
     div.slack {
-        position: absolute;
-        top: auto;
-        left: 45%;
         display: inline-block;
         width: 16ch;
         max-width: 16ch;
