@@ -16,6 +16,7 @@ let trivia_i0 = -1; // previous index
 let trivia_clicks = 0;
 
 
+/** won't work for <br> :) */
 const textScare = (selector, application) => {
     const containers = document.querySelectorAll(selector); // get all containers validated by selector filter
 
@@ -25,8 +26,30 @@ const textScare = (selector, application) => {
         let fontSize = parseFloat(window.getComputedStyle(container).fontSize);
         
         if (application === "worten") {
-            elements = container.textContent.trim().split(/\s+/);
+            let children = container.innerHTML.trim() //Array.from(container.children);
+            while (children) {
+                let start, end;
+                if (children[0] == ' ' || !children[0] || children[0].match(/\s+/)) {
+                    end = children.search(/\S/);
+                } 
+                else if (children[0] != '<') {
+                    start = 0;
+                    end = children.search(/\s+/);
+                    if (end == -1) end = children.length;
+                    elements.push(children.substring(start, end));
+                } else {
+                    start = 0;
+                    end = children.indexOf(">", children.indexOf(">")+1)+1;
+                    elements.push(children.substring(start, end));
+                    console.log("node", elements[elements.length-1])
+                }
+                children = children.substring(end);
+                //console.log(children)
+            }
+            console.log(elements)
+            //elements = container.textContent.trim().split(/\s+/);
             elementType = "wort";
+
         } else if (application === "chars") {
             const words = container.textContent.trim().split(/\s+/);
             words.forEach((word, i) => {
@@ -43,13 +66,31 @@ const textScare = (selector, application) => {
 
         const translatedElements = [];
         elements.forEach((element, i) => {
+            let elementTag = "span";
+            let elementText = element;
+            let elementClasses;
+
             if (application === "chars" && element === " ") {
                 container.appendChild(document.createTextNode(" "));
                 return;
+            } else if (element[0] == '<') {
+                elementText = element.slice(element.indexOf(">")+1, element.indexOf("<", 1));
+                elementTag = element.slice(1,element.slice(1).search(/\W/)+1);       
+                let s = element.indexOf('class="')+7;
+                if (s != 6) {
+                    elementClasses = element.slice(s,element.indexOf('"', s+1))
+                }
             }
-            const span = document.createElement("span");
+
+            const span = document.createElement(elementTag);
             span.classList.add(elementType); // apply the corresponding css
-            span.textContent = element;
+            if (elementClasses) {
+                let classes = elementClasses.trim().split(/\s+/)
+                for (const e of classes)
+                    span.classList.add(e)
+            }
+            span.innerHTML = elementText;
+            
             container.appendChild(span);
 
             if (application === "worten" && i < elements.length - 1) {
@@ -188,3 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     textScare(".word-wrapper", "worten");
 });
 
+addEventListener("resize", (event) => { 
+    textScare(".char-wrapper", "chars");
+    textScare(".word-wrapper", "worten");
+})
