@@ -124,6 +124,11 @@ nav {
     }
 }
 
+nav::before {
+    -webkit-mask-image:-webkit-gradient(linear, right top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
 figure {
     padding: var(--fluff);
     border: 2px solid var(--50p);
@@ -241,6 +246,30 @@ div#projects {
     a:hover {
         text-decoration: none;
     }
+}
+
+.voysey {
+    background: url('assets/background/voysey-tulip-wallpaper-1559-in-architextures.jpg');
+    background-size: 60%;
+    background-position: left;
+}
+
+.clay {
+    background: url('assets/background/clay-paver_texture.jpg');
+    background-size: 60%;
+    background-position: left;
+}
+
+.hoose {
+    background: url('assets/background/hoose-wallpaper-in-moss-4094-in-architextures.jpg');
+    background-size: 60%;
+    background-position: left;
+}
+
+.tile {
+    background: url('assets/background/demountable-ceiling-tile-stack-9606-in-architextures.jpg');
+    background-size: 60%;
+    background-position: left;
 }
 
 
@@ -395,6 +424,22 @@ div#contact {
     display: grid;
     grid-template: 100% / auto auto auto;
 
+    span {
+        font-family: var(--sans-bold);
+        position: absolute;
+        width: fit-content;
+        overflow-wrap: normal;
+        left: 0;
+        margin: auto;
+        padding: 2px;
+        text-align: center;
+        transition: 300ms ease;
+    }
+
+    span:hover {
+        text-shadow: var(--base) 0 0 10px;
+    }
+
     .grid-item {
         display: flex;
         align-items: center;
@@ -417,12 +462,6 @@ div#contact {
             width: 100%;
             max-width: 100%;
         }
-
-        span {
-            position: absolute;
-            top: 47%;
-            left: 27%;
-        }
     }
 
     div.email {
@@ -435,12 +474,6 @@ div#contact {
         img {
             width: 100%;
             max-width: 100%;
-        }
-
-        span {
-            position: absolute;
-            top: 40%;
-            left: 3ch;
         }
     }
 
@@ -455,13 +488,13 @@ div#contact {
             width: 100%;
             max-width: 100%;
         }
-
-        span {
-            position: absolute;
-            top: 47%;
-            left: 3ch;
-        }
     }
+}
+
+.abs-v-center {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .mini-resume {
@@ -678,6 +711,7 @@ body.noise::before {
 }
 
 .intro-noise::before {
+    z-index: -1;
     height: 100%;
     background: linear-gradient(140deg, #0015FF80 30%, transparent),
     radial-gradient(circle at top left, white, transparent 500px),

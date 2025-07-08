@@ -17,7 +17,23 @@ let trivia_clicks = 0;
 
 const achievements_db = data.achievements;
 
-/** won't work for <br> :) */
+/** projects */
+const projects_toggle_list_view = document.getElementById("projects-toggle-list-view");
+const projects_toggle_grid_view = document.getElementById("projects-toggle-grid-view");
+const projects_listed_container = document.getElementById("projects-listed");
+const project_all = document.getElementsByClassName("projects-listed-item");
+
+projects_toggle_list_view.addEventListener('click', () => {
+    projects_listed_container.style.gridTemplateColumns = "100%";
+});
+
+projects_toggle_grid_view.addEventListener('click', () => {
+    projects_listed_container.style.gridTemplateColumns = "50% 50%";
+});
+
+
+/** PURELY VISUAL
+ * won't work for href links (can't click on them anyway lol) or <br> */
 const textScare = (selector, application) => {
     const containers = document.querySelectorAll(selector); // get all containers validated by selector filter
 
@@ -171,7 +187,6 @@ function applyTextScare() {
     textScare(".char-wrapper", "chars");
     textScare(".word-wrapper", "worten");
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const trivia_fetcher = document.getElementById("trivia-fetcher");
