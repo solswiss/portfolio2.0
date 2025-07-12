@@ -1,3 +1,27 @@
+main {
+    padding: var(--gutter) 0;    
+    height: 100%;
+}
+
+.project-page {
+    transition: opacity 0.5s ease;
+}
+
+/** for <html> **/
+.page-hidden {
+    opacity: 0;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    align-content: left;
+    justify-content: start;
+    gap: var(--gutter);
+    width: 50%;
+    margin: 0 auto;
+}
+
 .projects-listed {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -10,22 +34,43 @@
 }
 
 .projects-listed-item {
-    height: 200px;
+    height: 250px;
     width: 100%;
     border: 2px solid var(--base);
+    background: var(--basea);
+    backdrop-filter: blur(5px);
+
+    transition: opacity .5s ease, transform .5s;
 
     img {
         float: left;
         height: 100%;
-        margin-right: var(--gutter);
     }
+}
+
+.preview-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    height: 100%;
 
     div, p {
-        padding-right: var(--fluff);
+        padding: 0 var(--fluff);
+    }
+
+    div {
+        display: inline;
     }
 
     p {
-        overflow-y: scroll;
+        overflow: scroll;
         overflow-wrap: normal;
+        scrollbar-color: var(--70p);
     }
+}
+
+.hidden {
+    opacity: 0;
+    transform: scale(.98);
 }

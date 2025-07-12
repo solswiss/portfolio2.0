@@ -1,6 +1,9 @@
 import { data } from './data.js';
 
 
+// load footer (sitemap)
+$("#footer").load("footer.html .site-map");
+
 let achievements = []; // keeps track of achievements
 
 /** trivial stuff */
@@ -15,21 +18,11 @@ let trivia_punchout = new Set(); // stores seen indices
 let trivia_i0 = -1; // previous index
 let trivia_clicks = 0;
 
+/** project mosiac (preview) */
+const projects = data.projects;
+const projects_container = document.getElementById("projects-container");
+
 const achievements_db = data.achievements;
-
-/** projects */
-const projects_toggle_list_view = document.getElementById("projects-toggle-list-view");
-const projects_toggle_grid_view = document.getElementById("projects-toggle-grid-view");
-const projects_listed_container = document.getElementById("projects-listed");
-const project_all = document.getElementsByClassName("projects-listed-item");
-
-projects_toggle_list_view.addEventListener('click', () => {
-    projects_listed_container.style.gridTemplateColumns = "100%";
-});
-
-projects_toggle_grid_view.addEventListener('click', () => {
-    projects_listed_container.style.gridTemplateColumns = "50% 50%";
-});
 
 
 /** PURELY VISUAL
@@ -188,59 +181,99 @@ function applyTextScare() {
     textScare(".word-wrapper", "worten");
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const trivia_fetcher = document.getElementById("trivia-fetcher");
-    const trivia_container = document.getElementById("trivia-container");
-    const trivia_toggle = document.getElementById("trivia-toggle-all");
-
-    // this kind of function could be made into an obj if i put more of it in the site
-    // fetch random trivia from array
-    trivia_fetcher.addEventListener("click", function (e) {
-        trivia_toggle.classList.remove("active"); // turn that off
-
-        if (trivia_punchout.size >= trivia.length) {
-            if (trivia_punchout.has(-1)) {
-                // reset
-                trivia_punchout = new Set(); // stores seen indices
-                trivia_clicks = 0;
-                trivia_container.innerHTML = `you're going again?? really??????`;
-            } else {
-                trivia_container.innerHTML = 
-                `<span class='uppercase bold'>congrats!</span> 
-                you've seen all the trivia!!! 
-                and it only took <span class='bold'>${trivia_clicks}</span> clicks!!!!!!`;
-                trivia_punchout.add(-1);
-                achievements.push("trivia");
-
-                if (trivia_toggle.classList.contains("locked")) {
-                    trivia_toggle.classList.remove("locked");
-                    trivia_toggle.removeAttribute("disabled");
-                    trivia_toggle.classList.add("clear-btn");
-                }
+function loadProjectsMosiac() {
+/**<a href="#" class="project-preview project-under-construction">
+    <div class="project-preview-sneak">
+        <img src="assets/sharkboo.png" alt="">
+        <span>We're So Back (Almost)</span>
+    </div>
+</a> */
+    
+    for (const [genre, arr] of Object.entries(projects)) {
+        arr.forEach((project) => {
+            let a = document.createElement("a");
+            a.classList.add("project-preview");
+            let div = document.createElement("div");
+            if (Object.keys(project).includes("spotlight")) {
+                div.classList.add("project-preview-sneak");
+                let img = document.createElement("img");
+                img.src = project.spotlight;
+                div.appendChild(img);
             }
-        } else {
-            trivia_clicks++;
-            let i1;
-            do {
-                i1 = Math.floor(Math.random()*trivia.length);
-            } while (i1 == trivia_i0); 
-            trivia_i0 = i1; // ban repeat trivias
-            trivia_punchout.add(i1);
-            trivia_container.innerHTML = trivia[i1];
-        }
-        applyTextScare();
-    });
+            let span = document.createElement("span");
+            span.innerHTML = project.name;
+            div.appendChild(span);
+            a.appendChild(div);
 
-    trivia_toggle.addEventListener("click", function (e) {
-        // no need to check since when locked user cannot interact (hopefully)
-        trivia_toggle.classList.toggle("active");
-        if (trivia_toggle.classList.contains("active")) {
-            trivia_container.innerHTML = trivia_all;
+            switch (project.status) {
+                case "hiatus": break;
+                case "wip": a.classList.add("project-under-construction");
+                case "fin": break;
+                default: break; // lol
+            }
+
+            projects_container.appendChild(a);
+        })
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.location.pathname.endsWith("index.html")) {
+        loadProjectsMosiac();
+
+        const trivia_fetcher = document.getElementById("trivia-fetcher");
+        const trivia_container = document.getElementById("trivia-container");
+        const trivia_toggle = document.getElementById("trivia-toggle-all");
+
+        // this kind of function could be made into an obj if i put more of it in the site
+        // fetch random trivia from array
+        trivia_fetcher.addEventListener("click", function (e) {
+            trivia_toggle.classList.remove("active"); // turn that off
+
+            if (trivia_punchout.size >= trivia.length) {
+                if (trivia_punchout.has(-1)) {
+                    // reset
+                    trivia_punchout = new Set(); // stores seen indices
+                    trivia_clicks = 0;
+                    trivia_container.innerHTML = `you're going again?? really??????`;
+                } else {
+                    trivia_container.innerHTML = 
+                    `<span class='uppercase bold'>congrats!</span> 
+                    you've seen all the trivia!!! 
+                    and it only took <span class='bold'>${trivia_clicks}</span> clicks!!!!!!`;
+                    trivia_punchout.add(-1);
+                    achievements.push("trivia");
+
+                    if (trivia_toggle.classList.contains("locked")) {
+                        trivia_toggle.classList.remove("locked");
+                        trivia_toggle.removeAttribute("disabled");
+                        trivia_toggle.classList.add("clear-btn");
+                    }
+                }
+            } else {
+                trivia_clicks++;
+                let i1;
+                do {
+                    i1 = Math.floor(Math.random()*trivia.length);
+                } while (i1 == trivia_i0); 
+                trivia_i0 = i1; // ban repeat trivias
+                trivia_punchout.add(i1);
+                trivia_container.innerHTML = trivia[i1];
+            }
             applyTextScare();
-        } else {
-            trivia_container.innerHTML = "";
-        }
-    })
+        });
+
+        trivia_toggle.addEventListener("click", function (e) {
+            // no need to check since when locked user cannot interact (hopefully)
+            trivia_toggle.classList.toggle("active");
+            if (trivia_toggle.classList.contains("active")) {
+                trivia_container.innerHTML = trivia_all;
+                applyTextScare();
+            } else {
+                trivia_container.innerHTML = "";
+            }
+        })
+    }
 
     textScare(".char-wrapper", "chars");
     textScare(".word-wrapper", "worten");

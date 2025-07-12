@@ -1,5 +1,6 @@
 :root {
     --base:#FFFFFF;
+    --basea:rgba(255,255,255,0.7);
     --70p:#CBFFDF;
     --50p:#CBF0FA;
     --20p: #AAF0E0;
@@ -12,6 +13,7 @@
 
     --locked-texture: url('assets/texture/texture_locked.png');
     --locked: #00000050;
+    --project-status-size: 100px;
 
     --sans-default: Geist Mono, Roboto, sans-serif;
     --sans-bold: hm-print, sans-serif;
@@ -144,16 +146,17 @@ footer {
     height: fit-content;
     width: 100%;
     border-top: 2px solid var(--50p);
+    padding-top: var(--gutter);
 
     .site-map {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-template-rows: auto;
         grid-template-areas: 
-        "main etc etc . "
-        "main etc etc . "
-        "main . . . "
-        "main . . . ";
+        "main etc fun img "
+        "main etc fun img "
+        "main etc . . "
+        "main etc . . ";
         gap: var(--gutter);
         width: 70%;
         margin: 0 auto;
@@ -173,6 +176,20 @@ footer {
     .branch-etc {
         grid-area: etc;
     }
+
+    .branch-fun {
+        grid-area: fun;
+    }
+
+    .branch-img {
+        grid-area: img;
+
+        img {
+            width: auto;
+            max-width: 100%;
+            max-height: 50%;
+        }
+    }
 }
 
 hr {
@@ -189,7 +206,7 @@ hr {
 div#projects {
     display: grid;
     grid-template-columns: 1;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 15% 85%;
     height: 100vh;
     min-height: fit-content;
     max-height: 200vh;
@@ -200,78 +217,47 @@ div#projects {
         height: 100%;
         padding: var(--fluff) var(--gutter);
     }
+}
 
-    .page-wrapper {
-        display: grid;
-        grid-template-columns: repeat(4,25%); /* might use areas instead for more variability */
-        grid-template-rows: 1;
-        grid-gap: 0;
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    width: 95%;
+    margin: 0 auto;
+}
 
-        height: auto;
+.projects-container .project-preview {
+    width: 100%;
+    height: fit-content;
+}
+
+.project-under-construction div::after {
+    display: inline-block;
+    background-image: url('assets/icons/barricade_ii_construction.gif');
+    background-size: var(--project-status-size);
+    position: absolute;
+    top: calc(0px - var(--project-status-size)/3);
+    right: calc(0px - var(--project-status-size)/3);
+    content: "";
+    height: var(--project-status-size);
+    width: var(--project-status-size);
+}
+
+.project-preview-sneak {
+    width: 100%;
+    
+    img {
         width: 100%;
+        height: auto;
+    }
 
-        padding: 0 var(--gutter);
-        margin: 0 auto;
-
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: var(--fluff);
-            border: 2px solid var(--base); /*temp*/
-            border-radius: var(--border-rad); /*temp*/
-        }
+    span {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: var(--fluff);
     }
 }
-
-#projects section {
-    display: flex;
-    align-items: stretch;
-    min-height: 100%;
-    min-width: 100%;
-}
-
-/** can also make this a mess; hence the modular buttons **/
-.project-wrapper {
-    display: block;
-
-    button {
-        margin: var(--fluff);
-    }
-}
-
-/** project themes **/
-.golf {
-    a:hover {
-        text-decoration: none;
-    }
-}
-
-.voysey {
-    background: url('assets/background/voysey-tulip-wallpaper-1559-in-architextures.jpg');
-    background-size: 60%;
-    background-position: left;
-}
-
-.clay {
-    background: url('assets/background/clay-paver_texture.jpg');
-    background-size: 60%;
-    background-position: left;
-}
-
-.hoose {
-    background: url('assets/background/hoose-wallpaper-in-moss-4094-in-architextures.jpg');
-    background-size: 60%;
-    background-position: left;
-}
-
-.tile {
-    background: url('assets/background/demountable-ceiling-tile-stack-9606-in-architextures.jpg');
-    background-size: 60%;
-    background-position: left;
-}
-
 
 .flex {
     display: flex;
@@ -335,6 +321,15 @@ span.emoji {
     border-radius: 3px;
 }
 
+span.kemoji {
+    font-family: var(--halb-mono), 'Courier New', Courier, monospace;
+    padding: 0px 3px;
+    color: #000;
+    background-color: #fff;
+    border-radius: 3px;
+    /** how to set img height.. line-height? then 100%? **/
+}
+
 /** pos custom **/
 .centerx2 {
     display: flex;
@@ -391,6 +386,10 @@ div#intro {
     height: fit-content;
     min-height: 85%;
     margin: var(--gutter);
+}
+
+#intro-author-img {
+    width: 80%;
 }
 
 div.trivia {
@@ -634,6 +633,11 @@ img.demo:hover {
 img.fill {
     height: 100%;
     width: 100%;
+}
+
+.mask-dither-ball {
+    mask: url('assets/texture/mask_ball_dither_fade.png');
+    mask-size: 100%;
 }
 
 /** TESTING AREA DONT TOUCH!!!! **/

@@ -7,15 +7,49 @@ export const data = {
             "my favorite color combo is probably white and red",
             "cats, cats, cats!</span>&nbsp;<a href='/catllection.html'>interested?</a>",
             "i have a minor rubber ducky collection, courtesy of a certain rubber-duck-obsessed teacher",
-            "i've been to the forbidden palace, glass bridge, and great wall of china <span class='emoji'>🫧&lt;~~&gt;</span>",
+            "i've been to the forbidden palace, glass bridge, and great wall of china <span class='kemoji'>🫧&lt;~~&gt;</span>",
             "once i baked a custom cake with gold flakes. unfortunately my very young tastebuds collaborated to assemble terrible topping combinations...",
             "[1]i willingly got stuck in and survived quicksand and on that same day.....",
             "[2]....i biked out to a small lakeside peninsula which was littered with fish skeletons!",
             "i've tried parasailing! very fun at first and then becomes a gentle ride down - would recommend rollercoasters over parasailing if you've already tried it",
-            "rollercoasters can no longer scare me. i've tried thrice in just two years to no avail - however it's still worth going with friends <span class='emoji'>&lt;**&gt;+</span> specifically to enjoy their fear, of course!",
+            "rollercoasters can no longer scare me. i've tried thrice in just two years to no avail - however it's still worth going with friends <span class='kemoji'>&lt;**&gt;+</span> specifically to enjoy their fear, of course!",
             "according to <a href='https://chosic.com' target='_blank'>chosic</a> and <a href='https://statsforspotify.com' target='_blank'>statsforspotify</a> my top music genres are breakcore, jungle, french house, vgm, and nu disco",
 
         ],
+    },
+    "projects": {
+        "webdev": [],
+        "gamedev": [
+            {
+                "name":"We're So Back (Almost)",
+                "status": "hiatus",
+                "badges": ["java","metal"],
+                "spotlight": "assets/sharkboo.png",
+                "desc":"Roguelike 2D pixel platformer x dungeon-crawler with a necromancer theme! Co-developed entirely in Java for an end-of-year game jam. The final version was put through vigorous playtesting and received great reactions&mdash;most notably that it was considered one of the best games overall! <span class='emoji'><^^></span> Put on indefinite hiatus."
+            },
+        ],
+        "general": [
+            {
+                "name":"Photomosiac Generator",
+                "status": "hiatus",
+                "badges": ["python","pillow"],
+                "desc":"tba"
+            }
+        ],
+        "electronics": [
+            {
+                "name":"Merce macropad",
+                "status": "wip",
+                "badges":["kicad","pcb"],
+                "desc":"tba"
+            },
+            {
+                "name":"Grais mini fidgetboard",
+                "status": "wip",
+                "badges":["kicad","pcb"],
+                "desc":"tba"
+            }
+        ]
     },
     "achievements": {
         "click": {

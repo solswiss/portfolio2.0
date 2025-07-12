@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A portfolio in progress and a major time eater.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
@@ -26,8 +27,7 @@
                 <p class="yap-intro">
                     <span class="uppercase bold farbe-seaweed">ahoy!</span> if you ever need, you can call me swiss, sol, milo, or ray, and yes, i realize the indecisiveness of my ways!<br/>
                     i'm a cheeky college-bound chameleon sailing the high seas of the lone star state, soon to encounter some rocky cliffs—trust me, i can feel it in the waters.<br/>
-                    in case you ever need <em>this</em>, here's a <span class="cur-help" title="confused, are ye? email me for the real thing!">resume ⏸️</span><br/>
-                    understandably this has you floored, but hark! i am but a casual sightseer, and as us sightseers do, i partake in <span class="italic">hobbies</span>,<br/>
+                    at the end of the day, i am but a casual sightseer, and as us sightseers do, i partake in hobbies,<br/>
                     with the likes of taking myself out for a walk on the deck<sup>1</sup>, 
                     other recreational activity, 
                     dozing away in hopes of curing my sleepless nights<sup>2</sup>, 
@@ -44,25 +44,26 @@
                     <li>and nonsensical literature, for that matter; somehow i feel the need to also note that i frequent manga, manhwa, and manhua. cultured, no?</li>
                     <li>what are friends for?</li>
                 </ol>
+                <div class="trivia">
+                    <div class="sublabel">trivia</div>
+                    <div>
+                        <button id="trivia-fetcher" class="modular-btn clear-btn">random trivia</button>
+                        <button id="trivia-toggle-all" class="modular-btn locked" disabled>show all</button>
+                    </div>
+                    <p id="trivia-container"></p> <!-- doesn't work! -->
+                </div>
             </div>
             <div class="panel-right-2 d30p centerx2">
-                <img src="assets/sharkboo.png" alt="me persona, a scrible" class="">
+                <img src="assets/sharkboo.png" id="intro-author-img" class="mask-dither-ball" alt="swiss in art form">
             </div>
-        </div>
-        <div class="trivia">
-            <div class="sublabel">trivia</div>
-            <div>
-                <button id="trivia-fetcher" class="modular-btn clear-btn">random trivia</button>
-                <button id="trivia-toggle-all" class="modular-btn locked" disabled>show all</button>
-            </div>
-            <p id="trivia-container"></p> <!-- doesn't work! -->
         </div>
     </div>
     </div>
-    <main> <!-- is this weird? yeah, i think so too -->
+    <div class="page">
+        <main>
         <div id="projects">
             <div class="project-brief">
-                <div class="header bold"><a href="/projects.html">Projects</a></div>
+                <div class="header bold">Projects</div><a href="/projects.html">take me there! (temp)</a>
                 <div>The results of ideas that somehow make it out of my heavily rigged labyrinth
                     and contemplative hours at midnight and whilst I slumber, 
                     more likely than not mixed with blood, sweat, and tears&mdash;so, so many tears.
@@ -70,82 +71,12 @@
                     <span class="emoji">&lt;TT&gt;</span>
                 </div>
             </div>
-            <div class="page-wrapper">
-                <section id="webdev" class="hoose">
-                    <div class="header">webdev</div>
-                    <div class="project-wrapper">
-                        <a href="#">haaaaaaaaaaa</a>
-                    </div>
-                </section>
-                <section id="gamedev" class="tile">
-                    <div class="header">gamedev</div>
-                    <div class="project-wrapper">
-                        <a href="#" class="project-link">We're So Back (Almost)</a>
-                    </div>
-                </section>
-                <section id="programming" class="clay">
-                    <div class="header">general programming</div>
-                    <div class="project-wrapper">
-                        <a href="/projects/photomosiacs.html" class="project-link">photomosiac generator</a>
-                    </div>
-                </section>
-                <section id="hardware" class="voysey">
-                    <div class="header">hardware</div>
-                    <div class="project-wrapper">
-                        <a href="/projects/merce_macropad.html" class="project-link fin-link">merce macropad</a>
-                        <a href="/projects/grais_fidget_board.html" class="project-link">grais fidget mini pcb</a>
-                    </div>
-                </section>
+            <div id="projects-container" class="projects-container">
             </div>
         </div>
-    </main>
-    <!--
-    <section id="webdev" class="w-b">
-            <div class="char-wrapper">
-                WEBDEV
-            </div>
-
-            <div class="sublabel">Web</div>
-            <div class="word-wrapper">
-                Praesent varius nulla eget nulla facilisis, id egestas justo egestas. Suspendisse ultricies facilisis mauris id posuere. Sed porta a nibh dapibus fermentum. Proin nunc magna, molestie quis cursus vitae, pellentesque et nibh. Cras sodales diam justo, eu feugiat turpis pellentesque in. In vel odio non augue euismod semper sit amet et libero. In tristique aliquet placerat. Mauris vulputate ultricies elit non fermentum. Nullam consequat mi nec diam vulputate ultricies. Ut viverra ultricies risus vitae euismod. Proin libero dolor, facilisis eu laoreet sit amet, pharetra sodales diam. Vivamus sed porttitor nisi, id placerat ex. Vivamus varius eu ante vitae sollicitudin.
-                Nam nisi ligula, mollis sit amet purus in, laoreet posuere sapien. Nam ac elit augue. Praesent vulputate ex vel tellus efficitur, eget consequat nulla cursus. Etiam mattis magna eget arcu gravida scelerisque. Suspendisse tempor metus massa, scelerisque hendrerit metus mattis a. Donec quis rutrum sem. Morbi eu cursus erat. Vivamus felis enim, lobortis sit amet leo in, interdum facilisis neque. Duis at enim sit amet risus accumsan finibus vitae non quam. 
-            </div>
-            <button class="rigid-btn blur">test obj</button>
-
-        </section>
-        <section id="gamedev">
-            <div>Games</div>
-        </section>
-        <section id="programming">
-            <div>General Programming</div>
-            <div>
-                <div id="photomosiac">
-                    <span>Photomosiac Generator</span>
-                    <div class="flex demo">
-                        <figure class="pointer">
-                            <figcaption>696x540 / DoCoMo emojis</figcaption>
-                            <img class="demo" src="assets/test1.jpg">
-                        </figure>
-                        <figure>
-                            <figcaption>696x552 / flowers</figcaption>
-                            <img class="demo" src="assets/demo_average_matching_extreme.jpg">
-                        </figure>
-                        <figure>
-                            <figcaption>??????? / solid color</figcaption>
-                            <img class="demo" src="assets/solid_color_matching.jpg">
-                        </figure>
-                        <figure>
-                            <figcaption>...</figcaption>
-                            <img class="demo" src="assets/demo_large_average_matcing.jpg">
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="hardware">
-            <div>Hardware</div>
-        </section>
-    -->
+        </main>
+    </div>
+   
     <div id="contact">
         <div class="label italic">Contact</div>
         <div class="contact-grid">
@@ -170,20 +101,8 @@
         </div>
     </div>
 
-    <footer>
-        <div class="site-map">
-            <div class="map-branch branch-main">
-                <a href="/index.html">home</a>
-                <a href="#intro">about</a>
-                <a href="#contact">contact</a>
-            </div>
-            <div class="map-branch branch-etc">
-                <a href="/index.html">home</a>
-                <a href="#intro">about</a>
-                <a href="#contact">contact</a>
-            </div>
-        </div>
-    </footer>
+    <footer id="footer"></footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="module" src="script.js"></script>
 </body>
 </html>
