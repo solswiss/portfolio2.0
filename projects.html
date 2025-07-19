@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <head id="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A portfolio in progress and a major time eater.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="projects.css">
+    <title>Portfolio von Sol</title>
 </head>
 <body class="intro-noise noise">
     <main>
@@ -11,6 +20,32 @@
         <div id="projects-listed" class="projects-listed">
         </div>
         
+        <div id="project-page" class="hidden">
+            <div class="page-controls">
+                <img src="assets/zuruck.gif" alt="back arrow" id="prev-page">
+                <img src="assets/nachste.gif" alt="next arrow" id="next-page">
+                <span id="close-page">CLOSE</span>
+            </div>
+            <div class="project-face"></div>
+            <div id="project-desc">
+                <p class="project-desc">
+                </p>
+            </div>
+            <div class="project-grid"> <!-- this is a minimalist grid -->
+                <div id="project-type"><span class="project-label uppercase">type</span><span class="project-type">webdev</span></div>
+                <div id="project-age"><span class="project-label uppercase">debut / conclusion</span><span class="project-age">00-00-0000 / 00-00-0000 or --</span></div> <!-- or <div class="project-age">(spring) (0000)</div> --> <!-- ignore last update -->
+                <div id="project-badges"><span class="project-label uppercase">badges</span><div class="project-badges"></div></div>
+                <div id="project-externals"><span class="project-label uppercase">externals</span><ul class="project-externals indent-star"></div>
+            </div>
+
+            <div class="project-gallery"></div>
+
+            <div id="project-updates">
+                <span class="title label">project updates</span>
+                <span class="updates-toggle">toggle updates</span>
+                <div class="project-updates">asfdjsajf</div>
+            </div>
+        </div>
     </main>
     <footer id="footer"></footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

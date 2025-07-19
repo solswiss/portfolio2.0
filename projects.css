@@ -40,11 +40,14 @@ main {
     background: var(--basea);
     backdrop-filter: blur(5px);
 
+    cursor: pointer;
     transition: opacity .5s ease, transform .5s;
 
     img {
         float: left;
         height: 100%;
+        max-width: 250px;
+        object-fit: cover;
     }
 }
 
@@ -70,7 +73,266 @@ main {
     }
 }
 
+.full-overlay {
+    z-index: 999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .hidden {
     opacity: 0;
     transform: scale(.98);
+}
+
+#project-page {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 96vh;
+    background: var(--basea);
+    backdrop-filter: blur(15px);
+    border-left: 2px solid var(--base);
+    border-right: 2px solid var(--base);
+    overflow: scroll;
+}
+
+.page-controls {
+    height: fit-content;
+    max-height: 35px;
+    min-width: max-content;
+    width: 50%;
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: flex-end;
+    float: right;
+    flex-direction: row;
+    gap: var(--fluff);
+    height: fit-content;
+    font-size: 1.6rem;
+    margin: 5px 0;
+    margin-right: var(--gutter);
+
+    >* {
+        cursor: pointer;
+    }
+
+    img {
+        height: 100%;
+    }
+}
+
+.project-face.spotlight {
+    height: 40%;
+}
+
+.project-face {
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    color: black;
+    margin-bottom: var(--gutter);
+
+    #project-title, .project-status {
+        margin-left: var(--fluff);
+    }
+
+    #project-title {
+        font-family: var(--sans-bold);
+        font-size: 3rem;
+    }
+
+    .page-spotlight {
+        height: 100%;
+        width: 100%;
+
+        img {
+            min-height: 100%;
+            max-height: 100%;
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: 50% 50%;
+        }
+    }
+
+    div.face-text {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 0 0 3% 0;
+        color: var(--base);
+
+        #project-title {
+            font-family: var(--sans-bold);
+            font-size: 3rem;
+            text-shadow:
+                3px 3px 5px black,
+                -3px 3px 5px black,
+                -3px -3px 5px black,
+                3px -3px 5px black;
+        }
+    }
+}
+
+#project-desc {
+    margin: var(--fluff);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-row: 200px;
+    grid-template-areas:"type" "age"
+                        "badges" "externals";
+    gap: var(--gutter);
+    font-family: var(--halb-mono);
+    margin: var(--gutter);
+}
+
+.project-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    font-size: 1.4rem;
+
+    span.project-label {
+        font-family: var(--halb-mono);
+    }
+
+    span:not(.project-label) {
+        font-weight: bold;
+    }
+}
+
+.java-badge::before {
+    background-image: url('https://images.icon-icons.com/1447/PNG/512/32432hotbeverage_98916.png');
+}
+
+.python-badge::before {
+    background-image: url('https://images.emojiterra.com/google/android-11/512px/1f40d.png');
+}
+
+.pillow-badge::before {
+    background-image: url('https://storkland.com/cdn/shop/products/780-1568_SharkFurryNeckPillow.png?v=1674153304&width=1920');
+}
+
+.kicad-badge::before {
+    background-image: url('https://avatars.githubusercontent.com/u/3374914?s=280&v=4');
+}
+
+.pcb-badge::before {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/2399/2399658.png');
+}
+
+.html5-badge::before {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1532/1532556.png');
+}
+
+.css-badge::before {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1062/1062304.png');
+}
+
+.js-badge::before {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/802/802241.png');
+}
+
+.godot-badge::before {
+    background-image: url('https://img.icons8.com/?size=512&id=UGrLCnKJf6Px&format=png');
+}
+
+.pixel-art-badge::before {
+    background-image: url('https://static.thenounproject.com/png/98945-200.png');
+}
+
+.project-badge::before {
+    display: inline-block;
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 36px;
+    width: 36px;
+    max-width: 50px;
+    margin-right: 10px;
+    content: "";
+}
+.project-badges {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gutter);
+}
+
+.project-badge {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid white;
+    vertical-align: middle;
+    line-height: normal;
+    height: 44px;
+    padding: 2px 5px;
+}
+
+#project-updates {
+    margin: var(--fluff);
+
+    > .label {
+        font-family: var(--halb-mono);
+    }
+}
+
+.project-externals li {
+    margin-left: 24px;
+}
+
+
+#status-fin::before {
+    content: "🔵";
+}
+
+#status-wip::before {
+    content: "🟢";
+}
+
+#status-hiatus::before {
+    content: "🟡";
+}
+
+.project-status {
+    background: black;
+    color: white;
+    padding-right: var(--fluff);
+}
+
+@keyframes fin-glow {
+    0% {text-shadow: none;}
+    50% {text-shadow: blue 0 0 8px, blue 0 0 8px, blue 0 0 5px;}
+    100% {text-shadow: none;}
+}
+.fin-glow {
+    animation: 3000ms fin-glow ease-in-out infinite;
+}
+
+@keyframes wip-glow {
+    0% {text-shadow: none;}
+    50% {text-shadow: springgreen 0 0 8px, springgreen 0 0 5px;}
+    100% {text-shadow: none;}
+}
+.wip-glow {
+    animation: 2400s wip-glow ease-in-out infinite;
+}
+
+@keyframes hiatus-glow {
+    0% {text-shadow: none;}
+    50% {text-shadow: orange 0 0 8px, orange 0 0 5px;}
+    100% {text-shadow: none;}
+}
+.hiatus-glow {
+    animation: 3000s hiatus-glow ease-in-out infinite;
 }

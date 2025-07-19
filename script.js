@@ -218,7 +218,7 @@ function loadProjectsMosiac() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.location.pathname.endsWith("index.html")) {
+    if (window.location.pathname == "/" || window.location.pathname.endsWith("index.html")) {
         loadProjectsMosiac();
 
         const trivia_fetcher = document.getElementById("trivia-fetcher");

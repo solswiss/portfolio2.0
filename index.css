@@ -66,8 +66,7 @@ html {
 body {
   background-color: var(--base);
   width: 100%;
-  min-height: 100%;
-  min-height: 500px;
+  min-height: calc(100% - 300px);
   padding: 0;
   margin: 0;
   font-family: var(--sans-default), sans-serif;
@@ -227,8 +226,21 @@ div#projects {
 }
 
 .projects-container .project-preview {
+    position: relative;
     width: 100%;
     height: fit-content;
+    font-family: var(--halb-mono);
+    color: var(--20p);
+    image-rendering: pixelated;
+    text-shadow:
+        1px 1px 0 black,
+        -1px 1px 0 black,
+        -1px -1px 0 black,
+        1px -1px 0 black;
+}
+
+.projects-container .project-preview:hover {
+    color: var(--base);
 }
 
 .project-under-construction div::after {
@@ -682,10 +694,8 @@ img.fill {
 .noise {
     position: auto; /** used to be relative, waiting for a problem **/
 
-    /** divs in the noise will be free from it **/
-    div {
-        position: relative;
-    }
+    /** divs in the noise will be free from it 
+    div {position:relative;}*/
 }
 
 .noise::before {
@@ -708,6 +718,9 @@ img.fill {
     url(https://grainy-gradients.vercel.app/noise.svg);
 }
 
+nav.lr-noise div {
+    position: relative;
+}
 body.noise,
 body.noise::before {
     min-height: 200vh;
@@ -725,24 +738,61 @@ body.noise::before {
     url(https://grainy-gradients.vercel.app/noise.svg);
 }
 
-/** animations **/
-.grow {
-    position: relative;
-    z-index: 1;
-    transform: scale(1);
-    transition: transform 400ms ease-in-out;
+.dynamic-eqgrid {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-rows: 500px;
+    grid-auto-rows: 500px;
+    gap: var(--fluff);
+    overflow: hidden;
+    padding: var(--fluff);
+
+    > * {
+        width: 100%;
+        height: 100%;
+        border: 2px solid var(--basea);
+    }
 }
 
-.grow:hover {
-    z-index: 999;
-    transform: scale(1.5);
+/* 1, 4, 7 */
+.dynamic-eqgrid > :nth-child(3n-2) {
+    background-color: var(--basea);
+}
+/* 1-2-3; 4-5-6; 7-8-9; */
+.dynamic-eqgrid > :nth-child(3n-1) {
+    background-color: var(--20p);
+}
+.dynamic-eqgrid > :nth-child(3n) {
+    background-color: var(--50p);
 }
 
-.golf {
-    background-image: url(assets/background/jonas-from-berlin-noK6LAtgWlE-unsplash.jpg);
-    background-size: cover;
+.rainsquared {
+    width: 100%;
+    background: repeating-linear-gradient(60deg, red 10px, yellow 200px, springgreen 300px, cyan 400px, magenta 500px, red 550px);
 }
 
-.testobj {
-    border: 2px solid black;
+.csr-piencat {
+    cursor:url('https://www.rw-designer.com/cursor-view/229089.png'),auto !important;
+}
+
+.csr-notexture {
+    cursor:url('https://www.rw-designer.com/cursor-view/229237.png'),auto !important;
+}
+
+.cursor-fieldset {
+    height: 80%;
+    width: max(70%, 350px);
+    float: right;
+    border: 5px dotted var(--basea);
+    margin-right: var(--gutter);
+
+    legend {
+        font-family: var(--display-johanneke);
+        font-size: 1.4rem;
+    }
+
+    div {
+        padding: 0 var(--fluff);
+    }
 }
