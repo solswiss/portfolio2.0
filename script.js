@@ -1,10 +1,17 @@
 import { data } from './data.js';
-
+import { setCursor } from './fun.js';
 
 // load footer (sitemap)
 $("#footer").load("footer.html .site-map");
 
+/** global attr */
+let cursor = sessionStorage.getItem("cursor") ? sessionStorage.getItem("cursor") : "auto";
+
+
+/** achievements */
+const achievements_db = data.achievements;
 let achievements = []; // keeps track of achievements
+
 
 /** trivial stuff */
 const trivia = data.trivia.array;
@@ -22,7 +29,7 @@ let trivia_clicks = 0;
 const projects = data.projects;
 const projects_container = document.getElementById("projects-container");
 
-const achievements_db = data.achievements;
+
 
 
 /** PURELY VISUAL
@@ -157,6 +164,17 @@ const textScare = (selector, application) => {
                 e.x = e.y = e.xf = e.yf = 0; 
             })
         })
+        if ($("#trivia-container")) {
+            $("#trivia-container").on('scroll', (e) => {
+                console.log("scrolled");
+                translatedElements.forEach((e) => {
+                    const rect = e.element.getBoundingClientRect();
+                    e.xi = rect.left + rect.width/2; // center
+                    e.yi = rect.top + rect.height/2;
+                    e.x = e.y = e.xf = e.yf = 0; 
+                })
+            })
+        }
 
         // smooth animation
         const animate = () => {
@@ -182,14 +200,8 @@ function applyTextScare() {
 }
 
 function loadProjectsMosiac() {
-/**<a href="#" class="project-preview project-under-construction">
-    <div class="project-preview-sneak">
-        <img src="assets/sharkboo.png" alt="">
-        <span>We're So Back (Almost)</span>
-    </div>
-</a> */
-    
     for (const [genre, arr] of Object.entries(projects)) {
+        let uid = 0;
         arr.forEach((project) => {
             let a = document.createElement("a");
             a.classList.add("project-preview");
@@ -198,6 +210,11 @@ function loadProjectsMosiac() {
                 div.classList.add("project-preview-sneak");
                 let img = document.createElement("img");
                 img.src = project.spotlight;
+                div.appendChild(img);
+            } else {
+                div.classList.add("project-preview-sneak");
+                let img = document.createElement("img");
+                img.src = "https://static.wikia.nocookie.net/2097a993-11ad-4b68-b203-283e8aa48d0c";
                 div.appendChild(img);
             }
             let span = document.createElement("span");
@@ -212,12 +229,20 @@ function loadProjectsMosiac() {
                 default: break; // lol
             }
 
+            a.id = genre+uid++;
             projects_container.appendChild(a);
         })
     }
+    $(".project-preview").click(function() {
+        const id = $(this).attr('id');
+        sessionStorage.setItem('project_page_id_to_load',id);
+        document.location.href = "/projects.html";
+    })
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    setCursor();
+
     if (window.location.pathname == "/" || window.location.pathname.endsWith("index.html")) {
         loadProjectsMosiac();
 

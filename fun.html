@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,33 +7,34 @@
         @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="specify.css">
     <title>Assorted Fun</title>
 </head>
-<body>
-    <main class="dynamic-eqgrid rainsquared">
-        <iframe src="https://solswiss.github.io/pq-arbmatch/" title="shark personality quiz" frameborder="0"></iframe>
+<body style="display:grid;grid-template-rows:1fr auto;">
+    <main class="fill-page">
+        <div class="pq-arbmatch"><iframe src="https://solswiss.github.io/pq-arbmatch/" title="shark personality quiz" frameborder="0" height="auto" width="100%"></iframe></div>
         <div class="cursor-menu" id="csr-select">
-            <fieldset class="cursor-fieldset">
-                <legend>chews ur curseur</legend>
-                <div>
-                    <input type="radio" name="cursor" value="regular" id="csr-default" checked>
-                    <label for="csr-default" checked>regular</label>
-                </div>
-                <div>
-                    <input type="radio" name="cursor" value="piencat" id="csr0">
-                    <label for="csr0">piencat</label>
-                </div>
-                <div>
-                    <input type="radio" name="cursor" value="notexture" id="csr1">
-                    <label for="csr1">rainbow</label>
-                </div>
-                <div>
-                    <input type="radio" name="cursor" value="large" id="csr2">
-                    <label for="csr2">large</label>
-                </div>
-            </fieldset>
+            <legend>cursors</legend>
+            <div class="cursor-container">
+                <img src="" alt="会" id="csr-default">
+                <img src="https://www.rw-designer.com/cursor-view/229089.png" alt="piencat" class="cursor-select-img" id="csr0">
+                <img src="assets/cursors/dogwalk_csr.gif" alt="dog with leash" class="cursor-select-img" id="csr1">
+                <img src="http://cur.cursors-4u.net/symbols/sym-6/sym597.cur" alt="grey five-pointed star" class="cursor-select-img" id="csr2">
+                <img src="assets/cursors/woodduck_csr.gif" alt="piencat" class="cursor-select-img" id="csr3">
+            </div>
         </div>
-        <div></div>
+        <div class="test">
+            <span class="fifty">shabadabadoo</span>
+            <span class="rainbow-stepped">hallo</span>
+            <div class="zeppy">ommmmm</div>
+            <div class="fun-loader">
+                <span>s</span>
+                <span>h</span>
+                <span>a</span>
+                <span>r</span>
+                <span>k</span>
+            </div>
+        </div>
         <div></div>
         <div></div>
         <div></div>

@@ -70,6 +70,111 @@ function fadeOut() {
     }
 }
 
+
+/** music bar */
+const tartist = document.querySelector("#music-artist");
+const ttitle = document.querySelector("#music-title");
+const ttime = document.querySelector("#track-time");
+const tduration = document.querySelector("#track-duration");
+
+const tlist = data.tracklist; // go do?
+let tidx = 0;
+let track = new Audio(null);
+let cvol = 0.5;
+
+$("#display-control").click(function(){
+    console.log("hi")
+    const bar = document.querySelector(".music-bar");
+    if (bar.classList.contains("hide-bar")) {
+        if (track == null) loadTrack();
+        bar.classList.remove("hide-bar");
+    } else {
+        bar.classList.add("hide-bar");
+    }
+})
+
+function formatSeconds(value) {
+    const min = Math.floor(value / 60);
+    const sec = Math.floor(value % 60);
+    return `${min.toString().padStart(2,"0")}:${sec.toString().padStart(2,"0")}`;
+}
+
+function loadTrack() {
+    console.log("loading track",tidx)
+    $("#track-seeker").val("0");
+    ttime.textContent = "00:00";
+    const ctrack = tlist[tidx];
+    tartist.textContent = ctrack.artist;
+    ttitle.textContent = ctrack.title;
+    track.setAttribute('src',"/assets/sound/"+ctrack.source);
+    let cduration = 0;
+    track.addEventListener('loadeddata', e => {
+        track.volume = cvol;
+        cduration = track.duration;
+        tduration.textContent = formatSeconds(cduration);
+    })
+    track.addEventListener('timeupdate', e => {
+        const ctime = track.currentTime;
+        if (tduration && tduration !== Infinity) {
+            ttime.textContent = formatSeconds(ctime);
+            $("#track-seeker").val(ctime*100/track.duration);
+        } else {
+            console.log("bad audio; fix duration");
+        }
+    })
+    track.addEventListener('ended', e => {
+        if (tidx+1 == tlist.length) tidx = 0;
+        else tidx++;
+        loadTrack();
+        track.play();
+    })
+}
+
+$("#prev-track").click(function(){
+    // play prev track if that exists; wraparound
+    if (tidx-1 < 0) tidx = tlist.length-1;
+    else tidx--;
+    loadTrack();
+    track.play();
+})
+$("#play-track").click(function(){
+    // play current track if that exists; die?
+    if (!track || track.getAttribute('src') == "null") {
+        loadTrack();
+        track.play();
+        $(".text-display").css("animation-play-state", "running");
+    } else if (track.paused) {
+        track.play();
+        $(".text-display").css("animation-play-state", "running");
+    } else {
+        track.pause();
+        $(".text-display").css("animation-play-state", "paused");
+    }
+})
+$("#next-track").click(function(){
+    // play next track if that exists; wraparound
+    if (tidx+1 == tlist.length) tidx = 0;
+    else tidx++;
+    loadTrack();
+    track.play();
+})
+
+$("#track-seeker").on('input', function(){
+    // change current time
+    const ctime = $("#track-seeker").val()/100*track.duration;
+    if (ctime > track.duration) {
+        ctime = track.duration;
+    }
+    track.currentTime = ctime;
+    ttime.textContent = formatSeconds(ctime);
+})
+$("#volume-seeker").on('input', function(){
+    // change music volume
+    cvol = $("#volume-seeker").val()/100;
+    track.volume = cvol;
+})
+
+
 document.querySelector("#close-page").addEventListener('click', e => {
     $("#project-page").addClass("hidden");
     $("#project-page").removeClass("full-overlay");
@@ -128,22 +233,18 @@ function loadPage() {
         case "fin":
             status.textContent = "concluded oh, this long ago";
             status.id = "status-fin";
-            status.classList.add('fin-glow');
             break;
         case "wip":
             status.textContent = "ongoing";
             status.id = "status-wip";
-            status.classList.add('wip-glow');
             break;
         case "hiatus":
             status.textContent = "paused";
             status.id = "status-hiatus";
-            status.classList.add('hiatus-glow');
             break;
         case "quit":
             status.textContent = "terminated";
             status.id = "status-fin";
-            status.classList.add('fin-glow');
             break;
     }
     let face = document.querySelector("div.project-face");
@@ -231,11 +332,6 @@ function loadPage() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    /**<div class="projects-listed-item col">
-                    <img src="assets/sharkboo.png" alt="placeholder">
-                    <div class="project-title label">title</div>
-                    <p class="project-desc">description</p>
-                </div> */
     for (const [genre, arr] of Object.entries(projects)) {
         let uid = 0;
         arr.forEach((project) => {
@@ -273,5 +369,18 @@ document.addEventListener("DOMContentLoaded", () => {
         loadPage();
         showPage();
     });
+
+    const passed_project_id = sessionStorage.getItem('project_page_id_to_load');
+    if (passed_project_id) {
+        sessionStorage.setItem('project_page_id_to_load',null);
+        const genre = passed_project_id.replace(/[^A-Za-z]/g, '');
+        const idx = passed_project_id.replace(/[A-Za-z]/g, '');
+        cur_genre = genre;
+        cur_idx = idx;
+        cur_pid = genre+idx;
+
+        loadPage();
+        showPage();
+    }
 })
 

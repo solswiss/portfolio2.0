@@ -1,6 +1,10 @@
 main {
-    padding: var(--gutter) 0;    
+    padding: 60px var(--gutter) 0 var(--gutter);    
     height: 100%;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 .project-page {
@@ -13,13 +17,20 @@ main {
 }
 
 .button-container {
+    position: relative;
     display: flex;
     flex-direction: row;
-    align-content: left;
+    align-content: flex-start;
     justify-content: start;
     gap: var(--gutter);
-    width: 50%;
     margin: 0 auto;
+    font-size: 1.2em;
+}
+
+.button-container,
+.projects-listed {
+    min-width: 1200px;
+    width: 70%;
 }
 
 .projects-listed {
@@ -27,15 +38,14 @@ main {
     grid-template-columns: 50% 50%;
     grid-template-rows: auto;
     gap: var(--gutter);
-    min-width: 50%;
-    width: 50%;
+    column-gap: calc(var(--gutter) / 2);
     max-width: 100%;
     margin: var(--gutter) auto;
 }
 
 .projects-listed-item {
     height: 250px;
-    width: 100%;
+    width: calc(100% - var(--gutter) / 2);
     border: 2px solid var(--base);
     background: var(--basea);
     backdrop-filter: blur(5px);
@@ -89,7 +99,7 @@ main {
 #project-page {
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 950px;
     height: 96vh;
     background: var(--basea);
     backdrop-filter: blur(15px);
@@ -212,27 +222,21 @@ main {
 .java-badge::before {
     background-image: url('https://images.icon-icons.com/1447/PNG/512/32432hotbeverage_98916.png');
 }
-
 .python-badge::before {
     background-image: url('https://images.emojiterra.com/google/android-11/512px/1f40d.png');
 }
-
 .pillow-badge::before {
     background-image: url('https://storkland.com/cdn/shop/products/780-1568_SharkFurryNeckPillow.png?v=1674153304&width=1920');
 }
-
 .kicad-badge::before {
     background-image: url('https://avatars.githubusercontent.com/u/3374914?s=280&v=4');
 }
-
 .pcb-badge::before {
     background-image: url('https://cdn-icons-png.flaticon.com/512/2399/2399658.png');
 }
-
 .html5-badge::before {
     background-image: url('https://cdn-icons-png.flaticon.com/512/1532/1532556.png');
 }
-
 .css-badge::before {
     background-image: url('https://cdn-icons-png.flaticon.com/512/1062/1062304.png');
 }
@@ -335,4 +339,245 @@ main {
 }
 .hiatus-glow {
     animation: 3000s hiatus-glow ease-in-out infinite;
+}
+
+
+div.music-bar span {
+    filter: 
+    drop-shadow(1px 0 0 white) 
+    drop-shadow(0 1px 0 white) 
+    drop-shadow(-1px 0 0 white) 
+    drop-shadow(0 -1px 0 white) 
+    drop-shadow(-0.5px 0.5px 0 var(--70p)) 
+    drop-shadow(0 0.5px 0 var(--70p)) 
+    drop-shadow(0 0.5px 0 var(--70p))
+}
+
+div.music-bar #display-control {
+    display: inline-block;
+    cursor: pointer;
+    height: 42px;
+    width: 20px;
+    background-image: url("assets/sharkboo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    content: "";
+    flex-shrink: 0;
+}
+
+div.music-bar.hide-bar {
+    width: 21px; /* makes up for border */
+    height: 42px;
+    padding: 0;
+
+    >* {
+        display: none;
+    }
+}
+
+.hide-bar::before {
+    display: none;
+}
+
+div.music-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    min-height: fit-content;
+    height: 42px;
+    overflow: hidden;
+    padding-right: var(--gutter);
+    border: 1px solid var(--base);
+    gap: var(--fluff);
+
+    input[type=range] {
+        appearance: none;
+        width: 100%;
+        height: 10px;
+        background: transparent;
+        border: 1px solid var(--base);
+        box-shadow: inset 2px 2px 0.5em var(--basea),
+                    inset -2px -2px 0.5em var(--basea);
+    }
+    input[type=range]:focus {
+        outline: none;
+    }
+    input[type=range]::-moz-range-thumb {
+        appearance: none;
+        height: 17px;
+        width: 7px;
+        border-radius: 3px;
+        background: var(--basea);
+        border-color: var(--base);
+        cursor: pointer;
+    }
+    input[type=range]::-moz-range-progress {
+        appearance: none;
+        height: 100%;
+        background: var(--base);
+    }
+}
+
+div.music-controls {
+    display: flex;
+    flex-direction: row;
+    gap: var(--fluff);
+
+    >* {
+        cursor: pointer;
+    }
+}
+
+div.text-container {
+    min-width: 300px;
+    width: 300px;
+    flex-grow: 1;
+    min-height: 70%;
+    height: 28px;
+    overflow: hidden;
+    border: 1px solid var(--base);
+    box-shadow: inset 10px 10px 0.5em var(--basea),
+                inset -10px -10px 0.5em var(--basea);
+}
+
+div.text-display {
+    transform: translateX(100%);
+    animation: text-scroll 15s linear infinite;
+    animation-play-state: paused;
+    min-width: max-content;
+}
+
+@keyframes text-scroll {
+    0% {transform: translateX(100%);}
+    100%{transform: translateX(-100%);}
+}
+
+div.music-seeking {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 300px;
+    width: 500px;
+    flex-grow: 1;
+    gap: var(--fluff);
+
+    span {
+        width: fit-content;
+        text-align: right;
+    }
+    .track-seeker {
+        width: 100%;
+        flex-grow: 1;
+    }
+}
+
+div.volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .volume-seeker {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+div.music-bar::before {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: -700px;
+    width: 700px;
+    height: 100%;
+    background: linear-gradient(140deg, transparent 30%, var(--basea), transparent 70%);
+    content: "";
+    transform: translateX(0);
+}
+div.music-bar:hover::before {
+    animation: glide-left 2000ms ease-in-out infinite;
+}
+
+@keyframes glide-left {
+    0%{transform: translateX(0);}
+    100%{transform: translateX(-150vw);}
+}
+
+@media screen and (max-width: 1400px) {
+    html {
+        font-size: 16px;
+    }
+    .button-container,
+    .projects-listed {
+        min-width: 900px;
+        width: 80%;
+    }
+    .projects-listed-item {
+        height: 200px;
+        img {
+            width: 200px;
+            max-width: 200px;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    div#project-page {
+        min-width: 550px;
+        width: 90vw;
+    }
+    div.text-container {
+        min-width: 150px;
+        width: 200px;
+    }
+    div.music-seeking {
+        min-width: 150px;
+        width: auto;
+    }
+    .button-container,
+    .projects-listed {
+        min-width: 500px;
+        width: 96%;
+    }
+    .projects-listed-item {
+        height: 160px;
+        img {
+            width: 160px;
+            max-width: 160px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 14px;
+    }
+    div#project-page {
+        min-width: 250px;
+        width: 95vw;
+    }
+    div.text-container {
+        min-width: 100px;
+        width: 140px;
+    }
+    div.music-seeking {
+        min-width: 150px;
+        width: auto;
+    }
+    .button-container,
+    .projects-listed {
+        min-width: 400px;
+        width: 98vw;
+    }
+    .projects-listed-item {
+        height: 120px;
+        img {
+            width: 120px;
+            max-width: 120px;
+        }
+    }
 }

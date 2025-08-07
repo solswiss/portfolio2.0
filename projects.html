@@ -12,6 +12,30 @@
 </head>
 <body class="intro-noise noise">
     <main>
+        <div class="music-bar hide-bar">
+            <div id="display-control" class="display-control"></div>
+            <div class="music-controls">
+                <div id="prev-track" class="music-control prev-track">P</div>
+                <div id="play-track" class="music-control play-track">P</div>
+                <div id="next-track" class="music-control next-track">N</div>
+            </div>
+            <div class="text-container">
+                <div class="text-display">
+                    <span id="music-artist" class="music-artist">TRACK ARTIST</span>
+                    <span>-</span>
+                    <span id="music-title" class="music-title">TRACK NAME</span>
+                </div>
+            </div>
+            <div class="music-seeking">
+                <span id="track-time" class="track-time">00:00</span>
+                <input type="range" min="0" max="100" value="0" name="seeker" id="track-seeker" class="track-seeker">
+                <span id="track-duration" class="track-duration">00:42</span>
+            </div>
+            <div class="volume-control">
+                <input type="range" min="0" max="100" value="50" name="volume" id="volume-seeker" class="volume-seeker">
+            </div>
+        </div>
+
         <div class="button-container">
             <button id="projects-toggle-list-view" class="modular-btn clear-btn">List</button>
             <button id="projects-toggle-grid-view" class="modular-btn clear-btn">Grid</button>

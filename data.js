@@ -1,11 +1,8 @@
 export const data = {
     "trivia": {
         "array": [ 
-            "i got a standing desk a few years back... and i think it'll be a while yet before i find a better setup",
             "i'm a life-long collector of shark memorabilia. maybe i'll add that to my titles when i've amassed a nice amount!",
-            "imo songs without lyrics are superior although i concede that karaoke is a great time",
             "my favorite color combo is probably white and red",
-            "cats, cats, cats!</span>&nbsp;<a href='/catllection.html'>interested?</a>",
             "i have a minor rubber ducky collection, courtesy of a certain rubber-duck-obsessed teacher",
             "i've been to the forbidden palace, glass bridge, and great wall of china <span class='kemoji'>🫧&lt;~~&gt;</span>",
             "once i baked a custom cake with gold flakes. unfortunately my very young tastebuds collaborated to assemble terrible topping combinations...",
@@ -13,10 +10,68 @@ export const data = {
             "[2]....i biked out to a small lakeside peninsula which was littered with fish skeletons!",
             "i've tried parasailing! very fun at first and then becomes a gentle ride down - would recommend rollercoasters over parasailing if you've already tried it",
             "rollercoasters can no longer scare me. i've tried thrice in just two years to no avail - however it's still worth going with friends <span class='kemoji'>&lt;**&gt;+</span> specifically to enjoy their fear, of course!",
-            "according to <a href='https://chosic.com' target='_blank'>chosic</a> and <a href='https://statsforspotify.com' target='_blank'>statsforspotify</a> my top music genres are breakcore, jungle, french house, vgm, and nu disco",
+            "according to chosic and statsforspotify, my top music genres are breakcore, jungle, french house, vgm, and nu disco",
 
         ],
     },
+    "tracklist": [
+        {
+            "artist":"Ketsa",
+            "title":"Satellites",
+            "source":"Ketsa - Satellites.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY-NC-ND",
+        },
+        {
+            "artist":"Musinova",
+            "title":"Clear Horizons",
+            "source":"Musinova - Clear Horizons.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY",
+        },
+        {
+            "artist":"Origami Repetika",
+            "title":"Cure",
+            "source":"Origami Repetika - Cure.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY",
+        },
+        {
+            "artist":"Origami Repetika",
+            "title":"Rayr a y",
+            "source":"Origami Repetika - Rayr a y.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY",
+        },
+        {
+            "artist":"Visager",
+            "title":"Witch's Hut",
+            "source":"Visager - Witch's Hut.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY",
+        },
+        {
+            "artist":"Visager",
+            "title":"The Great Tree",
+            "source":"Visager - The Great Tree.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY"
+        },
+        {
+            "artist":"Bill Vortex",
+            "title":"Bizac Truffes Max",
+            "source":"Bill Vortex - Bizac Truffes Max.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY-NC-ND"
+        },
+        {
+            "artist":"Kevin Macleod",
+            "title":"Radio Martini",
+            "source":"Kevin Macleod - Radio Martini.mp3",
+            "credit":"Free Music Archive",
+            "license":"CC BY-NC-ND"
+        },
+    ],
     "projects": {
         "webdev": [
             {
@@ -35,6 +90,22 @@ export const data = {
                     "source":"https://github.com/solswiss/pq-arbmatch",
                     "live":"https://solswiss.github.io/pq-arbmatch/",
                 }
+            },
+            {
+                "name":"mimic",
+                "status":"wip",
+                "type":"webdev",
+                "badges":["html5","css","js"],
+                "desc":"A curated selection of collections gathered off the top of my head and put to page. No rhyme or reason, except for maybe the inescapable need to document one's own collections. Be nice to ze Mimic!!!",
+                "related":
+                {
+                    "doc":"2024/07/30",
+                    "season":"summer",
+                    "year":"2025",
+                    "updd":"2025/08/06",
+                    "source":"https://github.com/solswiss/mimic",
+                    "live":"https://solswiss.github.io/mimic/",
+                }
             }
         ],
         "gamedev": [
@@ -46,12 +117,12 @@ export const data = {
                 "desc":"Roguelike 2D pixel platformer x dungeon-crawler with a necromancer theme! Co-developed entirely in Java for an end-of-year game jam. The final version was put through vigorous playtesting and received great reactions&mdash;most notably that it was considered one of the best games overall! <span class='emoji'><^^></span> Put on indefinite hiatus."
             },
             {
-                "name":"???",
+                "name":"Paying The Bills",
                 "status":"wip",
                 "type":"top-down puzzler",
                 "badges":["godot","pixel art"],
                 "spotlight":"https://www.dartagnan.com/dw/image/v2/BJQL_PRD/on/demandware.static/-/Sites-dartagnan-Library/default/dwa9da5a54/images/content/what-breed-of-duck-is-best-for-eating.jpg",
-                "desc":"tba... Top-down puzzle game that is remarkably similar to the Hitman series games. Tastefully inspired, this game was created by a team of four for (haha get it) a duck+bomb game jam within a month!",
+                "desc":"tba... Top-down puzzle game that is remarkably similar to the Hitman series games. Tastefully inspired, this game was created by a team of four for (haha get it) the Nuke a Duck game jam within a month!",
                 "related":
                 {
                     "doc":"2025/07/02",

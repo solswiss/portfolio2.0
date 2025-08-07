@@ -18,12 +18,14 @@
             <span class="padding-xtra"></span>
         </div>
     </nav>
-    <div class="page center">
+    <div id="about" class="page center">
     <div id="intro" class="padding-xtra">
-        <div class="label italic">Introductions</div>
-        <div>Get to know me <span class="emoji">\<^^>/</span></div>
-            <div class="container-2">
-            <div class="panel-left-2 d70p">
+        <div class="intro-grid">
+            <div class="yap-intro">
+                <div class="intro-header">
+                    <div class="label italic">Introductions</div>
+                    <div>Get to know me <span class="emoji">\<^^>/</span></div>
+                </div>
                 <p class="yap-intro">
                     <span class="uppercase bold farbe-seaweed">ahoy!</span> if you ever need, you can call me swiss, sol, milo, or ray, and yes, i realize the indecisiveness of my ways!<br/>
                     i'm a cheeky college-bound chameleon sailing the high seas of the lone star state, soon to encounter some rocky cliffs—trust me, i can feel it in the waters.<br/>
@@ -44,17 +46,17 @@
                     <li>and nonsensical literature, for that matter; somehow i feel the need to also note that i frequent manga, manhwa, and manhua. cultured, no?</li>
                     <li>what are friends for?</li>
                 </ol>
-                <div class="trivia">
-                    <div class="sublabel">trivia</div>
-                    <div>
-                        <button id="trivia-fetcher" class="modular-btn clear-btn">random trivia</button>
-                        <button id="trivia-toggle-all" class="modular-btn locked" disabled>show all</button>
-                    </div>
-                    <p id="trivia-container"></p> <!-- doesn't work! -->
-                </div>
             </div>
-            <div class="panel-right-2 d30p centerx2">
+            <div class="intro-img centerx2">
                 <img src="assets/sharkboo.png" id="intro-author-img" class="mask-dither-ball" alt="swiss in art form">
+            </div>
+            <div class="intro-trivia">
+                <div class="sublabel">trivia</div>
+                <div>
+                    <button id="trivia-fetcher" class="modular-btn clear-btn">random trivia</button>
+                    <button id="trivia-toggle-all" class="modular-btn locked" disabled>show all</button>
+                </div>
+                <p id="trivia-container"></p>
             </div>
         </div>
     </div>
@@ -63,7 +65,7 @@
         <main>
         <div id="projects">
             <div class="project-brief">
-                <div class="header bold">Projects</div><a href="/projects.html">take me there! (temp)</a>
+                <div class="header bold">Projects</div><a href="../projects.html">take me there! (temp)</a>
                 <div>The results of ideas that somehow make it out of my heavily rigged labyrinth
                     and contemplative hours at midnight and whilst I slumber, 
                     more likely than not mixed with blood, sweat, and tears&mdash;so, so many tears.

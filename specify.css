@@ -1,0 +1,185 @@
+.csr-piencat {
+    cursor:url('https://www.rw-designer.com/cursor-view/229089.png'),auto !important;
+}
+.csr-notexture {
+    cursor:url('https://www.rw-designer.com/cursor-view/229237.png'),auto !important;
+}
+.csr-dogwalk {
+    cursor:url('assets/cursors/dogwalk_csr.gif'),auto !important;
+}
+.csr-woodduck {
+    cursor:url('assets/cursors/woodduck_csr.gif'),auto !important;
+}
+.cursor-menu {
+    position: absolute;
+    top: 15vh;
+    right: 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 14vw;
+    width: 14vw;
+    background: radial-gradient(var(--70p), transparent);
+    mask: url('assets/texture/mask_petals_pointy.png') no-repeat;
+    mask-size: contain;
+    mask-mode: alpha;
+    content: "";
+    transition: transform 150ms ease;
+
+    legend {
+        font-family: var(--halb-mono);
+        font-size: 1.8vw;
+        line-height: 0.7;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 2px #3c9, 0 0 3px #3c9;
+    }
+}
+.cursor-menu:hover {
+    transform: rotate(10deg);
+}
+.cursor-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70%;
+    img.cursor-select-img {
+        min-width: 2vw;
+        display: inline-block;
+        cursor: pointer;
+    }
+}
+
+.pq-arbmatch::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    display: inline-block;
+    height: 104%;
+    width: 130%;
+    mask: url('https://static.wixstatic.com/media/219361_12bf1329b3e745a7a6abd2d1c25b5fa0~mv2.png/v1/fill/w_280,h_158,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ticket%20shape%20color-05.png');
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    background: url('assets/texture/tile_green_white_star.jpg');
+    background-repeat: repeat;
+    content: "";
+    mask-mode: alpha;
+}
+
+.pq-arbmatch {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 30vh;
+    left: 7vw;
+    min-height: 11.5vw;
+    height: auto !important;
+    width: 17vw;
+
+    iframe {
+        border: 3px dashed white;
+        flex-grow: 1;
+    }
+}
+
+.fifty {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(white 40%, lightblue 55%, blue);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 1px 2px #118);
+}
+
+.rainbow-stepped {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(#5cd 10%, #aaf 10% 20%, #e77 20% 30%, rgb(244, 200, 134) 30% 40%, #fe9 40% 50%, #ae3 50% 60%, #5cd 60% 70%, #aaf 70% 80%, #e77 80%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px brown;
+    font-family: var(--typewriter);
+}
+
+.zeppy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    min-width: fit-content;
+    width: 130px;
+    background-color: blue;
+    mask: radial-gradient(ellipse, black 40%, transparent 70%);
+    mask-mode: alpha;
+    color: #fff;
+    text-align: center;
+}
+
+.fun-loader {
+    position: absolute;
+    right: 5vw;
+    top: 5vh;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: fit-content;
+    font-size: 8vw;
+
+    * {
+        margin: 0 -14px;
+        line-height: 0.5;
+    }
+
+    :nth-child(1) {
+        font-weight: bold;
+        padding-top: 5px;
+    }
+    :nth-child(2) {
+        align-self: flex-end;
+        justify-self: flex-end;
+        font-weight: bold;
+        font-size: 80%;
+    }
+    :nth-child(3) {
+        font-size: 120%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    :nth-child(4) {
+        font-size: 90%;
+        padding-top: 7px;
+        font-family: serif;
+        margin-left: -3px;
+    }
+    :nth-child(5) {
+        font-size: 85%;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-top: 30px;
+        margin-left: -3px;
+    }
+    transition-delay: 100ms;
+}
+
+.fun-loader::after {
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-image: url('https://www.pngarts.com/files/11/Vector-Googly-Eyes-PNG-Free-Download.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -42px;
+    transform: scaleX(-1);
+}
